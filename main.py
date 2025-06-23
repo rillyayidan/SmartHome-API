@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def download_model_if_needed():
-    model_path = Path("smarthome_complete_pipeline.pkl")
+    model_path = Path("./models/smarthome_complete_pipeline.pkl")
     if not model_path.exists():
         print("📥 Model not found. Downloading from remote URL...")
         url = os.getenv("MODEL_DOWNLOAD_URL")
@@ -31,6 +31,7 @@ def download_model_if_needed():
         print("✅ Model downloaded and saved.")
     else:
         print("✅ Model file already exists. Skipping download.")
+
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -364,28 +365,25 @@ class DataProcessor:
         return kondisi_mapping[list(kondisi_mapping.keys())[0]]
 
 def load_pipeline():
-    """Load semua komponen pipeline"""
     global pipeline_components, predictor
-    
-    try:
-        # Load complete pipeline
-        pipeline_path = Path('smarthome_complete_pipeline.pkl')
-        if not pipeline_path.exists():
-            logger.error(f"Pipeline file not found: {pipeline_path}")
-            return False
-            
-        with open(pipeline_path, 'rb') as f:
-            pipeline_components = pickle.load(f)
-        
-        # Initialize predictor class
-        predictor = SmartHomePricePrediction(pipeline_components)
-        
-        logger.info("Pipeline loaded successfully")
-        return True
-    except Exception as e:
-        logger.error(f"Error loading pipeline: {str(e)}")
-        return False
 
+    try:
+        pipeline_path = Path("./models/smarthome_complete_pipeline.pkl")
+        if not pipeline_path.exists():
+            logger.error(f"❌ Model file not found at: {pipeline_path.resolve()}")
+            return False
+
+        logger.info(f"📦 Loading model from: {pipeline_path.resolve()}")
+        with open(pipeline_path, "rb") as f:
+            pipeline_components = pickle.load(f)
+
+        predictor = SmartHomePricePrediction(pipeline_components)
+        logger.info("✅ Pipeline loaded successfully")
+        return True
+
+    except Exception as e:
+        logger.error(f"❌ Error loading pipeline: {str(e)}")
+        return False
 class SmartHomePricePrediction:
     """Class untuk prediksi harga rumah dengan preprocessing lengkap"""
     
