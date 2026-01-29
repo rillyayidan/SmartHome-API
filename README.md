@@ -42,7 +42,7 @@ SmartHome Valuator is a REST API that predicts property prices in Semarang based
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/yourusername/smarthome-valuator.git
+git clone https://github.com/rillyayidan/smarthome-api.git
 cd smarthome-valuator
 ```
 
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 Create a `.env` file in the root directory:
 ```env
-MODEL_DOWNLOAD_URL=https://your-model-storage-url/smarthome_complete_pipeline.pkl
+MODEL_DOWNLOAD_URL=[https://github.com/rillyayidan/SmartHome-API/releases/download/v1.0/smarthome_complete_pipeline.pkl](https://github.com/rillyayidan/SmartHome-API/releases/download/v1.0/smarthome_complete_pipeline.pkl)
 ```
 
 5. **Run the application**
@@ -271,7 +271,7 @@ The API recognizes 6 main zones in Semarang:
 
 ```env
 # Model Configuration
-MODEL_DOWNLOAD_URL=https://your-storage-url/model.pkl
+MODEL_DOWNLOAD_URL=https://github.com/rillyayidan/SmartHome-API/releases/download/v1.0/smarthome_complete_pipeline.pkl
 
 # Server Configuration (optional)
 HOST=0.0.0.0
@@ -391,10 +391,6 @@ smarthome-valuator/
 │
 ├── models/               # Model files directory
 │   └── smarthome_complete_pipeline.pkl
-│
-└── docs/                 # Additional documentation (optional)
-    ├── API.md
-    └── MODEL.md
 ```
 
 ## 🤝 Contributing
