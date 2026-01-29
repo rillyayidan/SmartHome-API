@@ -1,25 +1,25 @@
 # 🏠 SmartHome Valuator API
 
-API backend untuk prediksi harga rumah di Semarang menggunakan Machine Learning. Dibangun dengan FastAPI dan menggunakan ensemble model untuk menghasilkan prediksi yang akurat.
+Backend API for house price prediction in Semarang using Machine Learning. Built with FastAPI and uses ensemble models to generate accurate predictions.
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 📋 Deskripsi
+## 📋 Description
 
-SmartHome Valuator adalah REST API yang memprediksi harga properti di Semarang berdasarkan berbagai fitur seperti lokasi, luas bangunan, jumlah kamar, dan fasilitas lainnya. API ini menggunakan ensemble model machine learning yang telah dilatih dengan data properti riil untuk memberikan estimasi harga yang akurat.
+SmartHome Valuator is a REST API that predicts property prices in Semarang based on various features such as location, building area, number of rooms, and other amenities. This API uses an ensemble machine learning model trained on real property data to provide accurate price estimates.
 
-### ✨ Fitur Utama
+### ✨ Key Features
 
-- 🎯 **Prediksi Akurat**: Menggunakan ensemble model (XGBoost, Random Forest, Gradient Boosting)
-- 🗺️ **Zone Mapping**: Mapping otomatis lokasi spesifik ke zona Semarang
-- 🔄 **Smart Imputation**: Handling missing data dengan intelligent defaults
-- 📊 **Batch Prediction**: Prediksi multiple properti sekaligus
-- 🏷️ **Kategorisasi**: Klasifikasi properti dari Ekonomis hingga Luxury
-- 📈 **Confidence Interval**: Estimasi ketidakpastian prediksi
-- 🚀 **Auto Model Download**: Download model otomatis dari remote URL
-- 📝 **API Documentation**: Interactive docs dengan Swagger UI
+- 🎯 **Accurate Predictions**: Uses ensemble models (XGBoost, Random Forest, Gradient Boosting)
+- 🗺️ **Zone Mapping**: Automatic mapping of specific locations to Semarang zones
+- 🔄 **Smart Imputation**: Handles missing data with intelligent defaults
+- 📊 **Batch Prediction**: Predict multiple properties at once
+- 🏷️ **Categorization**: Classifies properties from Economy to Luxury
+- 📈 **Confidence Interval**: Provides prediction uncertainty estimates
+- 🚀 **Auto Model Download**: Automatic model download from remote URL
+- 📝 **API Documentation**: Interactive docs with Swagger UI
 
 ## 🛠️ Tech Stack
 
@@ -30,15 +30,15 @@ SmartHome Valuator adalah REST API yang memprediksi harga properti di Semarang b
 - **Server**: Uvicorn
 - **Validation**: Pydantic
 
-## 📦 Instalasi
+## 📦 Installation
 
 ### Prerequisites
 
-- Python 3.8 atau lebih tinggi
+- Python 3.8 or higher
 - pip (Python package manager)
 - Virtual environment (recommended)
 
-### Setup Lokal
+### Local Setup
 
 1. **Clone repository**
 ```bash
@@ -46,7 +46,7 @@ git clone https://github.com/yourusername/smarthome-valuator.git
 cd smarthome-valuator
 ```
 
-2. **Buat virtual environment**
+2. **Create virtual environment**
 ```bash
 python -m venv venv
 
@@ -64,17 +64,17 @@ pip install -r requirements.txt
 
 4. **Setup environment variables**
 
-Buat file `.env` di root directory:
+Create a `.env` file in the root directory:
 ```env
 MODEL_DOWNLOAD_URL=https://your-model-storage-url/smarthome_complete_pipeline.pkl
 ```
 
-5. **Jalankan aplikasi**
+5. **Run the application**
 ```bash
 python main.py
 ```
 
-API akan berjalan di `http://localhost:8000`
+The API will run at `http://localhost:8000`
 
 ## 📚 API Documentation
 
@@ -89,7 +89,7 @@ http://localhost:8000
 ```http
 GET /
 ```
-Menampilkan informasi dasar API dan daftar endpoint yang tersedia.
+Displays basic API information and available endpoints.
 
 **Response:**
 ```json
@@ -110,7 +110,7 @@ Menampilkan informasi dasar API dan daftar endpoint yang tersedia.
 ```http
 GET /health
 ```
-Memeriksa status kesehatan API dan model.
+Checks API and model health status.
 
 **Response:**
 ```json
@@ -122,7 +122,7 @@ Memeriksa status kesehatan API dan model.
 }
 ```
 
-#### 3. Prediksi Harga Tunggal
+#### 3. Single Price Prediction
 ```http
 POST /predict
 ```
@@ -161,7 +161,7 @@ POST /predict
 }
 ```
 
-#### 4. Prediksi Batch
+#### 4. Batch Prediction
 ```http
 POST /batch-predict
 ```
@@ -198,13 +198,13 @@ POST /batch-predict
 ```http
 GET /model-info
 ```
-Menampilkan informasi tentang model yang sedang digunakan.
+Displays information about the currently loaded model.
 
 #### 6. Available Zones
 ```http
 GET /zones
 ```
-Menampilkan daftar zona dan lokasi yang tersedia.
+Displays list of available zones and locations.
 
 **Response:**
 ```json
@@ -225,47 +225,47 @@ Menampilkan daftar zona dan lokasi yang tersedia.
 
 | Field | Type | Required | Description | Example |
 |-------|------|----------|-------------|---------|
-| `lokasi` | string | ✅ | Lokasi properti di Semarang | "Tembalang" |
-| `kamar_tidur` | int/string | ❌ | Jumlah kamar tidur | 3 |
-| `kamar_mandi` | int/string | ❌ | Jumlah kamar mandi | 2 |
-| `luas_tanah` | int/string | ❌ | Luas tanah (m²) | "150" |
-| `luas_bangunan` | int/string | ❌ | Luas bangunan (m²) | "120" |
-| `carport` | int/string | ❌ | Jumlah carport | 1 |
-| `daya_listrik` | int/string | ❌ | Daya listrik (VA) | 1300 |
-| `jumlah_lantai` | int/string | ❌ | Jumlah lantai | 2 |
-| `kondisi_properti` | string | ❌ | Kondisi properti | "Bagus" |
-| `kondisi_perabotan` | string | ❌ | Kondisi perabotan | "Furnished" |
+| `lokasi` | string | ✅ | Property location in Semarang | "Tembalang" |
+| `kamar_tidur` | int/string | ❌ | Number of bedrooms | 3 |
+| `kamar_mandi` | int/string | ❌ | Number of bathrooms | 2 |
+| `luas_tanah` | int/string | ❌ | Land area (m²) | "150" |
+| `luas_bangunan` | int/string | ❌ | Building area (m²) | "120" |
+| `carport` | int/string | ❌ | Number of carports | 1 |
+| `daya_listrik` | int/string | ❌ | Electrical power (VA) | 1300 |
+| `jumlah_lantai` | int/string | ❌ | Number of floors | 2 |
+| `kondisi_properti` | string | ❌ | Property condition | "Bagus" |
+| `kondisi_perabotan` | string | ❌ | Furnishing condition | "Furnished" |
 
 ### Notes:
 - ✅ = Required field
-- ❌ = Optional field (akan di-impute dengan nilai default)
-- Semua field numeric dapat dikirim sebagai string dengan unit (akan dibersihkan otomatis)
+- ❌ = Optional field (will be imputed with default values)
+- All numeric fields can be sent as strings with units (will be cleaned automatically)
 
-## 🏷️ Kategori Properti
+## 🏷️ Property Categories
 
-API mengklasifikasikan properti ke dalam 6 kategori:
+The API classifies properties into 6 categories:
 
-| Kategori | Range Harga |
+| Category | Price Range |
 |----------|-------------|
-| Ekonomis | < Rp 500 juta |
-| Menengah Bawah | Rp 500 juta - Rp 1 miliar |
-| Menengah | Rp 1 miliar - Rp 2 miliar |
-| Menengah Atas | Rp 2 miliar - Rp 3.5 miliar |
-| Premium | Rp 3.5 miliar - Rp 6 miliar |
-| Luxury | > Rp 6 miliar |
+| Ekonomis (Economy) | < Rp 500 million |
+| Menengah Bawah (Lower Middle) | Rp 500 million - Rp 1 billion |
+| Menengah (Middle) | Rp 1 billion - Rp 2 billion |
+| Menengah Atas (Upper Middle) | Rp 2 billion - Rp 3.5 billion |
+| Premium | Rp 3.5 billion - Rp 6 billion |
+| Luxury | > Rp 6 billion |
 
-## 🗺️ Zona Semarang
+## 🗺️ Semarang Zones
 
-API mengenali 6 zona utama di Semarang:
+The API recognizes 6 main zones in Semarang:
 
-1. **Semarang Barat**: Ngaliyan, Kalibanteng, Tugu, BSB City, dll.
-2. **Semarang Timur**: Tembalang, Banyumanik, Pedurungan, Tlogosari, dll.
-3. **Semarang Utara**: Tanah Mas, Panggung, Kuningan, dll.
-4. **Semarang Selatan**: Wonodri, Candisari, Pleburan, dll.
-5. **Semarang Tengah**: Simpang Lima, Pemuda, Sekayu, dll.
-6. **Semarang Lainnya**: Ungaran, Bawen, Bergas, dll.
+1. **Semarang Barat (West)**: Ngaliyan, Kalibanteng, Tugu, BSB City, etc.
+2. **Semarang Timur (East)**: Tembalang, Banyumanik, Pedurungan, Tlogosari, etc.
+3. **Semarang Utara (North)**: Tanah Mas, Panggung, Kuningan, etc.
+4. **Semarang Selatan (South)**: Wonodri, Candisari, Pleburan, etc.
+5. **Semarang Tengah (Central)**: Simpang Lima, Pemuda, Sekayu, etc.
+6. **Semarang Lainnya (Others)**: Ungaran, Bawen, Bergas, etc.
 
-## 🔧 Konfigurasi
+## 🔧 Configuration
 
 ### Environment Variables
 
@@ -285,7 +285,7 @@ models/
 └── smarthome_complete_pipeline.pkl
 ```
 
-Model file harus berisi dictionary dengan keys:
+Model file must contain a dictionary with keys:
 - `models`: Dictionary of ML models
 - `ensemble_model`: Final ensemble model
 - `scaler`: Feature scaler
@@ -296,13 +296,13 @@ Model file harus berisi dictionary dengan keys:
 
 ## 🧪 Testing
 
-### Manual Testing dengan cURL
+### Manual Testing with cURL
 
 ```bash
 # Health check
 curl http://localhost:8000/health
 
-# Prediksi harga
+# Price prediction
 curl -X POST http://localhost:8000/predict \
   -H "Content-Type: application/json" \
   -d '{
@@ -312,7 +312,7 @@ curl -X POST http://localhost:8000/predict \
   }'
 ```
 
-### Testing dengan Python
+### Testing with Python
 
 ```python
 import requests
@@ -332,12 +332,12 @@ print(response.json())
 
 ## 📊 Model Performance
 
-Model menggunakan ensemble dari:
-- **XGBoost**: Gradient boosting dengan regularization
+The model uses an ensemble of:
+- **XGBoost**: Gradient boosting with regularization
 - **Random Forest**: Ensemble decision trees
 - **Gradient Boosting**: Sequential boosting algorithm
 
-Evaluasi model menggunakan metrics:
+Model evaluation uses metrics:
 - RMSE (Root Mean Squared Error)
 - MAE (Mean Absolute Error)
 - R² Score
@@ -364,7 +364,7 @@ EXPOSE 8000
 CMD ["python", "main.py"]
 ```
 
-Build dan run:
+Build and run:
 ```bash
 docker build -t smarthome-api .
 docker run -p 8000:8000 smarthome-api
@@ -372,11 +372,11 @@ docker run -p 8000:8000 smarthome-api
 
 ### Cloud Deployment
 
-API ini dapat di-deploy ke:
-- **Heroku**: Tambahkan `Procfile`
+This API can be deployed to:
+- **Heroku**: Add a `Procfile`
 - **Google Cloud Run**: Build container image
-- **AWS Elastic Beanstalk**: Package sebagai Python application
-- **Railway/Render**: Direct deployment dari GitHub
+- **AWS Elastic Beanstalk**: Package as Python application
+- **Railway/Render**: Direct deployment from GitHub
 
 ## 📁 Project Structure
 
@@ -399,13 +399,13 @@ smarthome-valuator/
 
 ## 🤝 Contributing
 
-Kontribusi selalu welcome! Untuk berkontribusi:
+Contributions are always welcome! To contribute:
 
-1. Fork repository ini
-2. Buat branch feature (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buat Pull Request
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Create a Pull Request
 
 ## 📄 License
 
@@ -413,14 +413,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [YourGithub](https://github.com/yourusername)
+- **Muhammad Rilly Ayidan** - *Initial work* - [YourGithub](https://github.com/rillyayidan)
 
 ## 🙏 Acknowledgments
 
-- Dataset properti Semarang
+- Semarang property dataset
 - FastAPI framework
 - Scikit-learn & XGBoost communities
-- Contributors dan testers
+- Contributors and testers
 
 ## 📞 Contact
 
@@ -428,4 +428,4 @@ Project Link: [https://github.com/rillyayidan/smarthome-valuator](https://github
 
 ---
 
-**⭐ Jika project ini membantu, jangan lupa untuk memberikan star!**
+**⭐ If this project helps you, don't forget to give it a star!**
