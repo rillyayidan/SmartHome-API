@@ -420,7 +420,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
 
-Project Link: [https://github.com/rillyayidan/smarthome-valuator](https://github.com/rillyayidan/smarthome-valuator)
+Project Link: [https://github.com/rillyayidan/smarthome-api](https://github.com/rillyayidan/smarthome-api)
 
 ---
 
