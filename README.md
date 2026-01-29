@@ -409,7 +409,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 👥 Authors
 
-- **Muhammad Rilly Ayidan** - *Initial work* - [YourGithub](https://github.com/rillyayidan)
+- **Muhammad Rilly Ayidan** - *Initial work* - [Rilly](https://github.com/rillyayidan)
 
 ## 🙏 Acknowledgments
 
