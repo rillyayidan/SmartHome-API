@@ -43,7 +43,7 @@ SmartHome Valuator is a REST API that predicts property prices in Semarang based
 1. **Clone repository**
 ```bash
 git clone https://github.com/rillyayidan/smarthome-api.git
-cd smarthome-valuator
+cd smarthome-api
 ```
 
 2. **Create virtual environment**
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 Create a `.env` file in the root directory:
 ```env
-MODEL_DOWNLOAD_URL=[Model](https://github.com/rillyayidan/SmartHome-API/releases/download/v1.0/smarthome_complete_pipeline.pkl)
+MODEL_DOWNLOAD_URL=https://github.com/rillyayidan/SmartHome-API/releases/download/v1.0/smarthome_complete_pipeline.pkl
 ```
 
 5. **Run the application**
